@@ -1,0 +1,21 @@
+import {definitions,defaults,calculatePlanner,convertField,active,presentation} from './planner-defs.mjs';
+import {fieldsHTML,repeatHTML,resultHTML,allFields} from './planner-ui.mjs';
+const cfg=JSON.parse(document.getElementById('planner-config').textContent),{slug,lang}=cfg,d=definitions[slug],$=id=>document.getElementById(id),form=$('planner-form');
+let state=defaults(slug),latest=null,timer;
+function set(obj,path,value){const keys=path.split('.');let at=obj;for(let i=0;i<keys.length-1;i++){if(!at[keys[i]])at[keys[i]]=/^\d+$/.test(keys[i+1])?[]:{};at=at[keys[i]];}at[keys.at(-1)]=value;}
+function get(obj,path){return path.split('.').reduce((a,k)=>a?.[k],obj);}
+function read(){const v={};for(const el of form.querySelectorAll('[data-value],[data-unit]'))set(v,el.name,el.type==='checkbox'?el.checked:el.value);return v;}
+function paint(){ $('planner-fields').innerHTML=fieldsHTML(d.fields,state,lang);$('repeat-fields').innerHTML=repeatHTML(slug,state,lang);}
+function updateVisibility(){for(const {f,name} of allFields(slug,state)){const wrap=form.querySelector(`[data-wrapper="${name}"]`),show=active(f,state);wrap.hidden=!show;for(const el of wrap.querySelectorAll('input,select'))el.disabled=!show;}}
+function calculate(focus=false){clearTimeout(timer);$('planner-announcement').textContent='';state=read();updateVisibility();for(const e of form.querySelectorAll('[aria-invalid]'))e.removeAttribute('aria-invalid');for(const e of form.querySelectorAll('.field-error'))e.textContent='';$('planner-error').hidden=true;$('copy-status').textContent='';
+ try{latest=calculatePlanner(slug,state);$('planner-result').innerHTML=resultHTML(slug,latest,lang,state);$('copy-result').disabled=false;const p=presentation(slug,latest,lang),message=`${p.label}: ${p.value}`;timer=setTimeout(()=>{$('planner-announcement').textContent=message;},250);if(focus)$('result-panel').focus();}
+ catch(e){latest=null;$('planner-result').textContent=lang==='zh'?'请修正输入以查看结果。':'Correct the inputs to see a result.';$('copy-result').disabled=true;$('planner-error').hidden=false;const code=e.code||e.message,msg=cfg.errors[code]||cfg.errors.range;$('planner-error').textContent=msg;if(e.field){const el=form.elements.namedItem(e.field);if(el){el.setAttribute('aria-invalid','true');const err=$(el.id+'-error');if(err)err.textContent=msg;if(focus)el.focus();}}else if(focus)$('planner-error').focus();}}
+form.addEventListener('input',e=>{if(e.target.matches('input[type=text]'))calculate();});
+form.addEventListener('change',e=>{if(e.target.hasAttribute('data-unit')){const el=e.target,fieldName=el.name.replace(/Unit$/,'');try{const n=convertField(get(read(),fieldName),el.dataset.previous,el.value);form.elements.namedItem(fieldName).value=n.toLocaleString('en-US',{useGrouping:false,maximumSignificantDigits:15});}catch{}el.dataset.previous=el.value;}calculate();});
+form.addEventListener('submit',e=>{e.preventDefault();calculate(true);});
+form.addEventListener('reset',e=>{e.preventDefault();state=defaults(slug);paint();calculate();});
+form.addEventListener('click',e=>{const btn=e.target.closest('[data-remove]');if(!btn)return;state=read();state[d.repeat.id].splice(Number(btn.dataset.remove),1);paint();calculate();});
+$('add-row')?.addEventListener('click',()=>{state=read();const defaultRow=defaults(slug)[d.repeat.id][0];state[d.repeat.id].push({...defaultRow,...(slug==='multicamera-storage'?{cameras:'1'}:{})});paint();calculate();});
+for(const button of document.querySelectorAll('[data-planner-example]'))button.addEventListener('click',()=>{state=structuredClone(cfg.examples[Number(button.dataset.plannerExample)]);paint();calculate();$('main').scrollIntoView();form.querySelector('input,select')?.focus({preventScroll:true});});
+$('copy-result').addEventListener('click',async()=>{if(!latest)return;const p=presentation(slug,latest,lang);const text=[document.title,...p.metrics.map(x=>`${x.label}: ${x.value}`),...p.notes,JSON.stringify(state)].join('\n');try{await navigator.clipboard.writeText(text);$('copy-status').textContent=lang==='zh'?'结果与输入已复制。':'Results and inputs copied.';}catch{$('copy-status').textContent=lang==='zh'?'无法自动复制，请选择结果文本复制。':'Automatic copy unavailable; select the result text to copy.';}});
+calculate();

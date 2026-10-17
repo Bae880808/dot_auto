@@ -1,32 +1,39 @@
 # dot_auto
 
-Research for an English/Simplified-Chinese video delivery and storage planning workbench.
+An English/Simplified-Chinese video delivery and storage planning workbench.
 
-**No website has been implemented or deployed. Stage 1 is in progress, not passed.** This repository currently preserves a reviewed research snapshot, not a working product or proof of commercial demand.
+## Current source: accepted Stage 4
 
-## Current evidence
+Eight functional calculators, each localized into English and Simplified Chinese, provide 16 tool URLs plus two localized homes:
 
-- 100 frozen candidate phrases: 50 English and 50 Simplified Chinese, mapped to eight canonical tools rather than 100 separate pages.
-- 72 strictly tool-intent candidates meet the numerical threshold of at least 60. Eight additional comparison candidates are included in the broader 80-row candidate flag; 20 are learning/informational queries.
-- The frozen dataset records zero verified top-three SERP observations. Live observation is incomplete and will be archived separately after review. The full Stage 1 gate is **not passed**.
-- Ten core queries are selected for later competitor inspection. Stage 2 requires opening and screenshotting the observed top five organic results per query. Browser-readiness checks do not count toward these 50 competitor screenshots.
-- Niche comparison and an independent challenge document existing supply and plausible differentiation. They do not establish search volume, low competition, traffic, paid demand, revenue, or country accessibility.
+1. Video file size
+2. Target-size bitrate budget
+3. Upload/transfer time
+4. Delivery-deadline budget
+5. Recording capacity
+6. Multicamera storage
+7. Offload and verified-copy time planning
+8. Proxy/storage and handoff-time tradeoff
 
-## Files
+The Stage 4 source has passed local automated verification. Stage 5 deployed auditing is in progress; local tests are not browser, mobile or Lighthouse acceptance.
 
-- `research/media-keywords-100.csv` and `.json`: frozen candidate list, including explicit unknown evidence fields.
-- `research/media-keywords-freeze.json`: freeze metadata and CSV SHA-256.
-- `research/media-keywords-core10.json`: selected next-stage queries.
-- `research/media-keywords-revisions.json`: candidate revisions.
-- `research/media-keywords-audit.md`: historical pre-freeze review. Its required replacements were applied in the freeze; the revision log is authoritative for those changes. Its broader 80 candidate count includes comparisons, not 80 strictly tool-intent rows.
-- `research/niche-comparison.md` and `research/media_niche_challenge.md`: recommendation, alternatives, primary references, risks and limits.
-- `acceptance/00-project-gates.md`: acceptance criteria for each stage.
-- `CHANGELOG/2026-10-17.md`: factual progress record in UTC.
+Verified preview origin: https://dot-auto.vercel.app/en/
 
-Formula specifications and example fixtures are still under independent review and are not included in this snapshot. The niche report's formula-spec reference describes planned supporting material, not a published implementation.
+At this source publication, the public preview still serves the accepted Stage 3 home/template and file-size exemplar until the next deployment. Do not assume the preview matches this commit. Stage 3 previously achieved mobile Lighthouse Performance/Accessibility/SEO 100/100/100 on its four localized home/tool pages; those scores do not certify the expanded Stage 4 site.
 
-## Planned scope, not completed features
+## Build and verify
 
-Video file size; target bitrate; upload/transfer time; delivery deadlines; recording capacity; multicamera storage; offload/verified-copy time planning; proxy/storage tradeoff. Computation is intended to use supplied measurements and explicit assumptions. It will not encode, upload, copy, or verify media files.
+Node.js 18+; no npm dependencies, account or API credentials required.
 
-Implementation is gated on research acceptance. No performance score, passing test suite, working preview, or completed stage is claimed here.
+    SITE_URL=https://dot-auto.vercel.app npm run verify
+    npm run serve
+
+See [BUILD.md](BUILD.md) for routes, units, assumptions and verification boundaries. Required files are src/, scripts/, tests/, data/ and package.json. The code-owned synthetic numeric fixtures are documented in [data/README.md](data/README.md). Deploy only generated dist contents, never the repository root.
+
+This code was archived from the accepted Stage 4 source snapshot with SHA-256 6be4c4307a7ff832d2a102276515ee05c98f85e03636a5a8f9793ffeb864eff4. No later in-progress source changes are included.
+
+## Limits
+
+Calculations use supplied measurements and explicit assumptions. They do not encode, upload, copy or verify media files, guarantee delivery times, or validate camera presets. Advanced parallel offload is an explicitly idealized model, not a performance promise.
+
+Existing research files are the initial frozen candidate snapshot. Later research archives and screenshots are not included in this code-only commit. Candidate phrases and competitor offers are not proof of demand, revenue, low competition or country reach.
