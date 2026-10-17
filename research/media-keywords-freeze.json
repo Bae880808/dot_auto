@@ -1,0 +1,29 @@
+{
+  "freeze_at_utc": "2026-10-17T18:16:00Z",
+  "version": "v2-reviewed",
+  "sha256_csv": "450d95fb48660f9395b06833409fd9440e027f38b533e8b7965b2a1b4acea8f2",
+  "count": 100,
+  "language_counts": {
+    "en": 50,
+    "zh-Hans": 50
+  },
+  "intent_counts": {
+    "工具": 72,
+    "学习": 20,
+    "比较": 8
+  },
+  "tool_intent_candidate_count": 80,
+  "canonical_tools": [
+    "video-file-size",
+    "target-bitrate",
+    "upload-transfer-time",
+    "delivery-deadline",
+    "recording-capacity",
+    "multicamera-storage",
+    "offload-verified-copy",
+    "proxy-storage-tradeoff"
+  ],
+  "query_revisions": 15,
+  "serp_top3_verified_count": 0,
+  "note": "Freeze timestamp rounded to minute. No rank/demand claims; SERP worker may add observations but should retain the frozen query list and revision log."
+}

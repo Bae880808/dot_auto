@@ -1,0 +1,107 @@
+[
+  {
+    "id": 5,
+    "from": "ProRes video file size calculator custom bitrate",
+    "to": "ProRes file size calculator bitrate",
+    "reason": "Independent reviewer naturalization or proxy duplicate replacement",
+    "query_revision": 2
+  },
+  {
+    "id": 10,
+    "from": "4K视频十分钟容量计算器",
+    "to": "10分钟4K视频大小计算器",
+    "reason": "Independent reviewer naturalization or proxy duplicate replacement",
+    "query_revision": 2
+  },
+  {
+    "id": 12,
+    "from": "ProRes视频文件大小 自定义码率计算",
+    "to": "ProRes视频大小计算器 码率",
+    "reason": "Independent reviewer naturalization or proxy duplicate replacement",
+    "query_revision": 2
+  },
+  {
+    "id": 23,
+    "from": "视频压到100MB以内 码率计算器",
+    "to": "100MB视频文件 目标码率计算器",
+    "reason": "Independent reviewer naturalization or proxy duplicate replacement",
+    "query_revision": 2
+  },
+  {
+    "id": 26,
+    "from": "含封装预留的视频码率预算计算器",
+    "to": "视频码率计算器 封装开销",
+    "reason": "Independent reviewer naturalization or proxy duplicate replacement",
+    "query_revision": 2
+  },
+  {
+    "id": 47,
+    "from": "视频交付截止时间 最晚上传计算器",
+    "to": "视频上传最晚开始时间计算器",
+    "reason": "Independent reviewer naturalization or proxy duplicate replacement",
+    "query_revision": 2
+  },
+  {
+    "id": 49,
+    "from": "截止时间前最大上传文件计算器",
+    "to": "限时上传最大文件大小计算器",
+    "reason": "Independent reviewer naturalization or proxy duplicate replacement",
+    "query_revision": 2
+  },
+  {
+    "id": 51,
+    "from": "含平台处理预留的上传截止计算器",
+    "to": "视频上传时间计算器 预留处理时间",
+    "reason": "Independent reviewer naturalization or proxy duplicate replacement",
+    "query_revision": 2
+  },
+  {
+    "id": 61,
+    "from": "预留空间后录制容量计算器",
+    "to": "存储卡预留空间后能录多久",
+    "reason": "Independent reviewer naturalization or proxy duplicate replacement",
+    "query_revision": 2
+  },
+  {
+    "id": 62,
+    "from": "包含音频码率的存储卡时长计算",
+    "to": "存储卡录制时长计算 包含音频",
+    "reason": "Independent reviewer naturalization or proxy duplicate replacement",
+    "query_revision": 2
+  },
+  {
+    "id": 74,
+    "from": "原片音频多份备份 拍摄容量计算",
+    "to": "拍摄素材和备份总容量计算器",
+    "reason": "Independent reviewer naturalization or proxy duplicate replacement",
+    "query_revision": 2
+  },
+  {
+    "id": 85,
+    "from": "校验读取耗时估算工具",
+    "to": "素材校验时间估算",
+    "reason": "Independent reviewer naturalization or proxy duplicate replacement",
+    "query_revision": 2
+  },
+  {
+    "id": 93,
+    "from": "camera originals plus proxies total storage calculator",
+    "to": "proxy transcoding versus upload time calculator",
+    "reason": "Independent reviewer naturalization or proxy duplicate replacement",
+    "query_revision": 2
+  },
+  {
+    "id": 95,
+    "from": "保留原片代理文件 存储容量计算器",
+    "to": "保留原片和代理需要多大存储空间",
+    "reason": "Independent reviewer naturalization or proxy duplicate replacement",
+    "query_revision": 2
+  },
+  {
+    "id": 99,
+    "from": "原片加代理文件总容量计算器",
+    "to": "代理转码和上传总耗时对比计算器",
+    "reason": "Independent reviewer naturalization or proxy duplicate replacement",
+    "query_revision": 2
+  }
+]
